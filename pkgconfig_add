@@ -1,2 +1,10 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
+fontconfig
+freetype2
+fribidi
+harfbuzz-gobject
+harfbuzz-icu
+harfbuzz-subset
+harfbuzz
+libpng16

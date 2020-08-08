@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : libass
 Version  : 0.14.0
-Release  : 3
+Release  : 4
 URL      : file:///insilications/build/clearlinux/packages/libass/libass-0.14.0.zip
 Source0  : file:///insilications/build/clearlinux/packages/libass/libass-0.14.0.zip
 Summary  : LibASS is an SSA/ASS subtitles rendering library
@@ -13,12 +13,26 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: libass-lib = %{version}-%{release}
 BuildRequires : findutils
+BuildRequires : fontconfig-dev
+BuildRequires : fontconfig-staticdev
+BuildRequires : freetype-dev
+BuildRequires : freetype-staticdev
+BuildRequires : fribidi-dev
+BuildRequires : fribidi-staticdev
+BuildRequires : harfbuzz-dev
+BuildRequires : harfbuzz-staticdev
+BuildRequires : libpng-dev
+BuildRequires : libpng-staticdev
 BuildRequires : nasm-bin
 BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(freetype2)
 BuildRequires : pkgconfig(fribidi)
 BuildRequires : pkgconfig(harfbuzz)
+BuildRequires : pkgconfig(harfbuzz-gobject)
+BuildRequires : pkgconfig(harfbuzz-icu)
+BuildRequires : pkgconfig(harfbuzz-subset)
 BuildRequires : pkgconfig(libpng)
+BuildRequires : pkgconfig(libpng16)
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -63,7 +77,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1595851427
+export SOURCE_DATE_EPOCH=1596919194
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -95,7 +109,7 @@ export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
-%autogen  --enable-shared --enable-static
+%autogen --enable-shared --enable-static
 make  %{?_smp_mflags}  V=1 VERBOSE=1
 
 make VERBOSE=1 V=1 %{?_smp_mflags} check
@@ -108,6 +122,7 @@ export LDFLAGS="${LDFLAGS_USE}"
 %autogen  --enable-shared --enable-static
 make  %{?_smp_mflags}  V=1 VERBOSE=1
 
+
 %check
 export LANG=C.UTF-8
 unset http_proxy
@@ -116,7 +131,7 @@ unset no_proxy
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1595851427
+export SOURCE_DATE_EPOCH=1596919194
 rm -rf %{buildroot}
 %make_install
 

@@ -1,4 +1,14 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
 findutils
+fontconfig-dev
+fontconfig-staticdev
+freetype-dev
+freetype-staticdev
+fribidi-dev
+fribidi-staticdev
+harfbuzz-dev
+harfbuzz-staticdev
+libpng-dev
+libpng-staticdev
 nasm-bin
