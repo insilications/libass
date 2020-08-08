@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : libass
 Version  : 0.14.0
-Release  : 4
+Release  : 5
 URL      : file:///insilications/build/clearlinux/packages/libass/libass-0.14.0.zip
 Source0  : file:///insilications/build/clearlinux/packages/libass/libass-0.14.0.zip
 Summary  : LibASS is an SSA/ASS subtitles rendering library
@@ -77,7 +77,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1596919194
+export SOURCE_DATE_EPOCH=1596930762
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -112,7 +112,7 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 %autogen --enable-shared --enable-static
 make  %{?_smp_mflags}  V=1 VERBOSE=1
 
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make VERBOSE=1 V=1 check
 make clean
 export CFLAGS="${CFLAGS_USE}"
 export CXXFLAGS="${CXXFLAGS_USE}"
@@ -128,10 +128,10 @@ export LANG=C.UTF-8
 unset http_proxy
 unset https_proxy
 unset no_proxy
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1596919194
+export SOURCE_DATE_EPOCH=1596930762
 rm -rf %{buildroot}
 %make_install
 
