@@ -4,7 +4,7 @@
 #
 Name     : libass
 Version  : 0.14.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/libass/libass/archive/0.14.0.tar.gz
 Source0  : https://github.com/libass/libass/archive/0.14.0.tar.gz
 Summary  : LibASS is an SSA/ASS subtitles rendering library
@@ -52,36 +52,37 @@ license components for the libass package.
 
 %prep
 %setup -q -n libass-0.14.0
+cd %{_builddir}/libass-0.14.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559072239
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604352851
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1559072239
+export SOURCE_DATE_EPOCH=1604352851
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libass
-cp COPYING %{buildroot}/usr/share/package-licenses/libass/COPYING
+cp %{_builddir}/libass-0.14.0/COPYING %{buildroot}/usr/share/package-licenses/libass/7b715718a08e1da65de75f83882b562e1b97b904
 %make_install
 
 %files
@@ -101,4 +102,4 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libass/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libass/COPYING
+/usr/share/package-licenses/libass/7b715718a08e1da65de75f83882b562e1b97b904
