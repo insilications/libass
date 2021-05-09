@@ -1,5 +1,6 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+binutils-dev
 findutils
 fontconfig-dev
 fontconfig-staticdev
@@ -7,6 +8,17 @@ freetype-dev
 freetype-staticdev
 fribidi-dev
 fribidi-staticdev
+gcc
+gcc-dev
+gcc-libs-math
+glib
+glib-bin
+glibc
+glibc-dev
+glibc-staticdev
+glib-data
+glib-dev
+glib-lib
 harfbuzz-dev
 harfbuzz-staticdev
 libpng-dev
